@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/asset/favicon.ico">
+
+    <title>Epub to Audiobook</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  </head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZYNCSBM3F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6ZYNCSBM3F');
+</script>
+
+  <body class="bg-light">
+
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+          <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+              <strong>Epub to AudioBook</strong>
+            </a>
+          </div>
+        </div>
+    </header>
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/asset/book.svg" alt="" width="72" height="72">
+        <h2>Epub to Audiobook</h2>
+        <p class="lead">
+	Upload your book file here. File type: <b>.txt</b> or <b>.epub</b>
+        </p>
+
+
+        <table class="table"     style="border: black solid 1px;">
+          <thead>
+            <tr>
+              <th style="border-right: black solid 1px;">Free</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td style="border: black solid 1px;">
+                <form action="/free_file_convert" enctype="multipart/form-data" method="post">
+
+                  <div>
+                      <label style="margin-top:20px; margin-bottom:20px;" for="formFileLg" class="form-label">.txt or .epub
+file upload</label>
+                      <input class="form-control form-control-lg" id="formFileLg" type="file" name="avatar" accept=".txt,.epub"  required>
+                  </div>
+        
+                  
+                  <label style="margin-top:20px;">
+                      <button>
+                          <div class="w-100 btn btn-primary btn-lg">Upload</div>
+                      </button>
+                  </label>
+        
+                </form>
+              </td>
+
+              
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Voice Samples</h4>
+        <table class="table" style="margin-top:50px;">
+          <thead>
+            <tr>
+              <th scope="col">Software</th>
+              <th scope="col">Name</th>
+              <th scope="col">Output</th>
+              <th scope="col">Price</th>
+              <th scope="col">Sample</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Espeak</th>
+              <td>N/A</th>
+              <td>.wav</td>
+              <td>Free</td>
+              <td><audio controls><source src="/asset/sample-free.wav" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <!--<tr>
+              <th scope="row">AWS Polly</th>
+              <td>Joanna</td>
+              <td>.mp3</td>
+              <td>$0.99</td>
+              <td><audio controls><source src="/asset/joanna_newscaster.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Mathew</td>
+              <td>.mp3</td>
+
+              <td>$0.99</td>
+              <td><audio controls><source src="/asset/mathew_newscaster.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Ivy Child</td>
+              <td>.mp3</td>
+              
+              <td>$0.99</td>
+	      <td><audio controls><source src="/asset/ivy_child.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Justin Child</td>
+              <td>.mp3</td>
+              
+              <td>$0.99</td>
+
+	      <td><audio controls><source src="/asset/justin_child.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Kimberly</td>
+              <td>.mp3</td>
+              
+
+              <td>$0.99</td>
+	      <td><audio controls><source src="/asset/Kimberly.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Salli</td>
+              <td>.mp3</td>
+              
+
+              <td>$0.99</td>
+	      <td><audio controls><source src="/asset/salli.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Joey</td>
+              <td>.mp3</td>
+              
+              <td>$0.99</td>
+	      <td><audio controls><source src="/asset/joey.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+              <th scope="row">AWS Polly</th>
+              <td>Kendra</td>
+              <td>.mp3</td>
+              
+              <td>$0.99</td>
+	      <td><audio controls><source src="/asset/kendra.mp3" type="audio/wav">Your browser does not support the audio element.</audio></td>
+            </tr>
+	    -->
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        form {
+            display:flex;
+            flex-direction: column;
+        }
+
+        form label {
+            display:flex;
+            flex-direction: column;
+            margin-top:10px;
+            align-items: center;
+        }
+
+        button {
+            border: none;
+            background-color:none;
+        }
+    </style>
+
+    </body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/asset/img/favicons/favicon.ico">
+
+    <title>Epub to Audiobook</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZYNCSBM3F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6ZYNCSBM3F');
+</script>
+
+  <body class="bg-light">
+
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong>Epub to AudioBook</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+
+      <div id="error_message" class="alert alert-danger hidden" role="alert">
+        Something went wrong. Try again later. Or email <a href="mailto:davenportm.md@gmail.com">davenportm.md@gmail.com</a> for help if you used a paid voice.
+      </div>
+
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/asset/book.svg" alt="" width="72" height="72">
+
+
+
+	<div style="width:90%; margin-left:auto; margin-right:auto; margin-top:20px; margin-bottom:20px;" class="progress"><div id="pbar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 1%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div>
+
+
+
+        <p>You're download link will appear here!</p>
+	<div class="ldBar" data-value="50"></div>
+        <div id="link_container">
+          <div id="link_display" class="spinner-border" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+	    $(document).ready(function(){
+
+		let myInterval = setInterval(advanceProgressBar, 250);
+		    window.myInterval = myInterval;
+
+		    function advanceProgressBar(){
+			      let pbar = document.getElementById('pbar');
+			      let valuenow = parseInt(pbar.getAttribute('aria-valuenow'));
+			      let valuemin = parseInt(pbar.getAttribute('aria-valuemin'));
+			      let valuemax = 90;
+			      valuenow = valuenow + 1;
+			      pbar.setAttribute('aria-valuenow', valuenow);
+			      pbar.style = "width:" + valuenow + "%";
+			      
+			      if(valuenow > valuemax){
+				  // Stop timer
+				  console.log("stop");
+				  clearInterval(window.myInterval);
+			      }
+		    }
+
+		let download = window.location.search.split('=')[1];
+		let xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+
+		xhr.addEventListener("readystatechange", function() {
+		  if(this.readyState === 4) {
+		    console.log(this.responseText);
+		    let json = JSON.parse(this.responseText);
+
+		    if(json.success == false){
+		      document.getElementById('error_message').classList.remove('hidden');
+		    }
+		    let location = json['url'];
+			  let button_html = `<button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+				    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path>
+				    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path>
+				  </svg>
+				                  Download
+			                </button>`;
+		    document.getElementById('link_container').innerHTML = `<a href="${location}" target="_blank">
+				${button_html}
+				  </a>`;
+		finished();
+		  }
+		});
+
+		xhr.open("GET", "/get_download_link?download=" + download);
+		xhr.setRequestHeader("Content-Type", "application/json");
+
+		xhr.send();
+	     
+
+	    });
+
+
+	function finished(){
+		    let pbar = document.getElementById('pbar');
+		    pbar.setAttribute('aria-valuenow', 100);
+		    pbar.style = "width:" + 100 + "%";
+		    clearInterval(window.myInterval);
+		    pbar.classList.remove('progress-bar-striped');
+		    pbar.classList.remove('progress-bar-animated');
+
+	}
+
+       
+    </script>
+
+    <style>
+      .hidden {
+        display:none;
+      }
+    </style>
+
+
+    </body>
+</html>
